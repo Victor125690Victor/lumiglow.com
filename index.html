@@ -1,11 +1,326 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Мой сайт</title>
-</head>
-<body>
-  <h1>Сайт работает 🎉</h1>
-  <p>GitHub Pages успешно включён.</p>
-</body>
-</html>
+import React from 'react';
+import { useLanguage } from '../components/contexts/LanguageContext';
+import { Lightbulb, Award, Heart, Leaf, Users, Globe } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+export default function About() {
+  const { t } = useLanguage();
+
+  const values = [
+    {
+      icon: Award,
+      title: t('quality'),
+      description: t('qualityText')
+    },
+    {
+      icon: Lightbulb,
+      title: t('design'),
+      description: t('designText')
+    },
+    {
+      icon: Heart,
+      title: t('comfort'),
+      description: t('comfortText')
+    },
+    {
+      icon: Leaf,
+      title: 'Sustainability',
+      description: 'We are committed to eco-friendly practices and sustainable materials in all our products.'
+    }
+  ];
+
+  const team = [
+    {
+      name: 'Emma Johnson',
+      role: 'Founder & CEO',
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop'
+    },
+    {
+      name: 'Michael Chen',
+      role: 'Head of Design',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop'
+    },
+    {
+      name: 'Sarah Williams',
+      role: 'Product Manager',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop'
+    },
+    {
+      name: 'David Kim',
+      role: 'Lead Craftsman',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop'
+    }
+  ];
+
+  const stats = [
+    { value: '15+', label: 'Years of Excellence' },
+    { value: '500+', label: 'Unique Designs' },
+    { value: '50k+', label: 'Happy Customers' },
+    { value: '30+', label: 'Countries Served' }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white dark:bg-zinc-900">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1489171078254-c3365d6e359f?w=1920&h=800&fit=crop"
+            alt="Workshop"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/90 to-white dark:from-zinc-900 dark:via-zinc-900/90 dark:to-zinc-900" />
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <span className="text-amber-500 font-medium text-sm tracking-wider uppercase mb-4 block">
+              {t('aboutTitle')}
+            </span>
+            <h1 className="text-5xl md:text-7xl font-light text-zinc-900 dark:text-white mb-6">
+              Crafting Light,<br />
+              <span className="text-amber-500">Creating Atmosphere</span>
+            </h1>
+            <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
+              {t('missionText')}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-zinc-50 dark:bg-zinc-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-4xl md:text-5xl font-bold text-amber-500 mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-zinc-600 dark:text-zinc-400">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Story Section */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-amber-500 font-medium text-sm tracking-wider uppercase mb-4 block">
+                {t('ourStory')}
+              </span>
+              <h2 className="text-4xl font-light text-zinc-900 dark:text-white mb-6">
+                From a Small Workshop to a Global Brand
+              </h2>
+              <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
+                <p>
+                  Founded in 2009 in a small workshop in Riga, Latvia, Lumière started with a simple vision: 
+                  to create beautiful, functional lighting that brings warmth and character to any space.
+                </p>
+                <p>
+                  Our founder, inspired by the long Nordic winters and the importance of light in daily life, 
+                  set out to design lamps that would not just illuminate, but transform spaces into cozy sanctuaries.
+                </p>
+                <p>
+                  Today, Lumière has grown into an international brand, but we've never forgotten our roots. 
+                  Every lamp we create still carries the same attention to detail and passion for quality that 
+                  defined our very first designs.
+                </p>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="grid grid-cols-2 gap-4">
+                <img
+                  src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=400&h=500&fit=crop"
+                  alt="Lamp 1"
+                  className="rounded-2xl shadow-xl"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=400&h=300&fit=crop"
+                  alt="Lamp 2"
+                  className="rounded-2xl shadow-xl mt-12"
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-amber-500 text-white rounded-2xl p-6 shadow-xl">
+                <div className="text-3xl font-bold">15+</div>
+                <div className="text-sm">Years of Excellence</div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-24 bg-zinc-50 dark:bg-zinc-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="text-amber-500 font-medium text-sm tracking-wider uppercase mb-4 block">
+              Our Values
+            </span>
+            <h2 className="text-4xl font-light text-zinc-900 dark:text-white mb-4">
+              {t('mission')}
+            </h2>
+            <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+              These core principles guide everything we do, from design to delivery.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white dark:bg-zinc-700 rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <div className="w-16 h-16 mx-auto mb-6 bg-amber-100 dark:bg-amber-900/30 rounded-2xl flex items-center justify-center">
+                  <value.icon className="h-8 w-8 text-amber-500" />
+                </div>
+                <h3 className="text-xl font-medium text-zinc-900 dark:text-white mb-3">
+                  {value.title}
+                </h3>
+                <p className="text-zinc-600 dark:text-zinc-400">
+                  {value.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="text-amber-500 font-medium text-sm tracking-wider uppercase mb-4 block">
+              Our Team
+            </span>
+            <h2 className="text-4xl font-light text-zinc-900 dark:text-white mb-4">
+              Meet the Creators
+            </h2>
+            <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+              The passionate individuals behind every Lumière creation.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {team.map((member, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center group"
+              >
+                <div className="relative mb-6 rounded-2xl overflow-hidden">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full aspect-square object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+                <h3 className="text-xl font-medium text-zinc-900 dark:text-white mb-1">
+                  {member.name}
+                </h3>
+                <p className="text-amber-500">{member.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Global Presence */}
+      <section className="py-24 bg-zinc-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <Globe className="h-6 w-6 text-amber-500" />
+                <span className="text-amber-500 font-medium text-sm tracking-wider uppercase">
+                  Global Presence
+                </span>
+              </div>
+              <h2 className="text-4xl font-light mb-6">
+                Lighting Homes Across the World
+              </h2>
+              <p className="text-zinc-400 mb-8">
+                From our headquarters in Riga, we ship to over 30 countries worldwide. 
+                Our lamps illuminate homes from New York to Tokyo, bringing warmth and 
+                elegance to spaces across different cultures and continents.
+              </p>
+              <div className="flex items-center gap-8">
+                <div>
+                  <div className="text-3xl font-bold text-amber-500">30+</div>
+                  <div className="text-sm text-zinc-400">Countries</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-amber-500">50k+</div>
+                  <div className="text-sm text-zinc-400">Customers</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-amber-500">100k+</div>
+                  <div className="text-sm text-zinc-400">Lamps Delivered</div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop"
+                alt="Global"
+                className="rounded-2xl shadow-2xl"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
